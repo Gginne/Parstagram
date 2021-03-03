@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     Button takePicture;
     Button savePicture;
     ImageView ivTakenPicture;
+    ProgressBar loadingProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         takePicture = findViewById(R.id.takePicture);
         savePicture = findViewById(R.id.savePicture);
         ivTakenPicture = findViewById(R.id.takenPicture);
-
+        loadingProgressBar = findViewById(R.id.loadingPicture);
         //queryPosts();
 
         takePicture.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
+                loadingProgressBar.setVisibility(View.VISIBLE);
                 savePost(description, currentUser, photoFile);
             }
         });
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
+                loadingProgressBar.setVisibility(View.INVISIBLE);
                 if(e != null){
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(MainActivity.this, "Error while saving", Toast.LENGTH_SHORT).show();
