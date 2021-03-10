@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Parstagram" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -12,10 +12,24 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="21">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.Parstagram.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MyActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="CustomActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@color/white</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+
+        <item name="background">@color/white</item>
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
     </style>
 </resources>
