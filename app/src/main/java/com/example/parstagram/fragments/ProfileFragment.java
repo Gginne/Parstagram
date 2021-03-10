@@ -30,8 +30,10 @@ public class ProfileFragment extends PostsFragment {
                 for(Post post: posts){
                     Log.i(TAG, "Post "+ post.getDescription());
                 }
-                allPosts.addAll(posts);
-                adapter.notifyDataSetChanged();
+                // Remember to CLEAR OUT old items before appending in the new ones
+                adapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                adapter.addAll(posts);
             }
         });
     }
