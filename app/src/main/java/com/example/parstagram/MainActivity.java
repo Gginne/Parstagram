@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.parstagram.fragments.ComposeFragment;
+import com.example.parstagram.fragments.PostsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -40,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     private File photoFile;
     private final String photoFileName = "photo.jpg";
 
+    final FragmentManager fragmentManager = getSupportFragmentManager();
+    // define your fragments here
+    final Fragment composeFragment = new ComposeFragment();
+    final Fragment postsFragment = new PostsFragment();
 
     BottomNavigationView bottomNavigationView;
 
@@ -55,20 +62,24 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.action_home:
-
+                        fragment = postsFragment;
                         break;
                     case R.id.action_compose:
-
+                        fragment = composeFragment;
                         break;
                     case R.id.action_profile:
+                        fragment = postsFragment;
+                        break;
                     default:
-
+                        fragment = postsFragment;
                         break;
                 }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
 
         });
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
 
