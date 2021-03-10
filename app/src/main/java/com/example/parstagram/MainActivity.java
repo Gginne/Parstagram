@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.parstagram.fragments.ComposeFragment;
 import com.example.parstagram.fragments.PostsFragment;
+import com.example.parstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     // define your fragments here
     final Fragment composeFragment = new ComposeFragment();
     final Fragment postsFragment = new PostsFragment();
+    final Fragment profileFragment = new ProfileFragment();
 
     BottomNavigationView bottomNavigationView;
 
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = composeFragment;
                         break;
                     case R.id.action_profile:
-                        fragment = postsFragment;
+                        fragment = profileFragment;
                         break;
                     default:
                         fragment = postsFragment;
