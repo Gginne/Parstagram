@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.ComposeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:hint="@string/prompt_description"
+        android:imeOptions="actionDone"
+        android:inputType="textMultiLine"
+        android:selectAllOnFocus="true"
+        tools:maxLines="2" />
+
+    <Button
+        android:id="@+id/takePicture"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:text="Take Picture"/>
+
+
+    <ImageView
+        android:id="@+id/takenPicture"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/savePicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:enabled="true"
+        android:text="Save Picture" />
+
+
+    <ProgressBar
+        android:id="@+id/loadingPicture"
+        android:layout_width="62dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+
+</LinearLayout>
